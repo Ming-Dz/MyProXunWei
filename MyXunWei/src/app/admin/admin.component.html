@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <h3>菜谱管理</h3>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>菜名</th>
+        <th>作者</th>
+        <th>创建时间</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let menu of _menu">
+        <tr>
+          <td>{{menu.ckname}}</td>
+          <td>{{menu.ckauthor}}</td>
+          <td>{{menu.cktime}}</td>
+          <td>
+            <button type="button" class="btn btn-danger btn-sm" (click)="delmenu(menu.ckid)">删除</button>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-container *ngFor="let usermenu of _usermenu">
+        <tr>
+          <td>{{usermenu.ckupname}}</td>
+          <td>{{usermenu.ckupauthor}}</td>
+          <td>{{usermenu.ckuptime}}</td>
+          <td>
+            <button type="button" class="btn btn-danger btn-sm" (click)="delusermenu(usermenu.ckupid)">删除</button>
+          </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+    <h3>帖子管理</h3>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>帖名</th>
+        <th>作者</th>
+        <th>创建时间</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let post of _post">
+        <tr>
+          <td>{{post.title}}</td>
+          <td>{{post.userid}}</td>
+          <td>{{post.posttime}}</td>
+          <td>
+            <button type="button" class="btn btn-danger btn-sm" (click)="delpost(post.title)">删除</button>
+          </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
+

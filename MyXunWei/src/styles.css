@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+.grid li {
+  list-style-type: none;
+  margin: 0;
+  display: inline-block;
+}
