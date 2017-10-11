@@ -23,6 +23,8 @@ export class HealthComponent implements OnInit {
         top: 526
       }
     });
+
+    //获取数据库中所有健康信息
     let that = this;
     that.hs.getAllHealth(function (result) {
       that._health = result;
@@ -31,6 +33,7 @@ export class HealthComponent implements OnInit {
     });
   }
 
+  //路由带参，跳转
   toHealthDetail(title) {
     this.router.navigate(['/health-detail', title]);
   }

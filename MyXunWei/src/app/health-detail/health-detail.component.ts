@@ -17,6 +17,7 @@ export class HealthDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    //接收路由中的参数，传给getDetailHealth方法
     let title = this.route.snapshot.paramMap.get('title');
     let that = this;
     that.hs.getDetailHealth(title, function (result) {

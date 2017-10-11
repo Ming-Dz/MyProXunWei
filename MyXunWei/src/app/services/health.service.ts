@@ -7,14 +7,14 @@ export class HealthService {
 
   constructor(private http: HttpClient) {
   }
-
+  //从数据库中拉取所有健康信息
   getAllHealth(callback) {
     this.http.get(this.url).subscribe(function (result) {
       callback(result);
       console.log(result);
     });
   }
-
+  //根据传来的title参数筛选，返回与标题对应的详细信息
   getDetailHealth(title, callback) {
     this.getAllHealth(function (_healthbody) {
       let ho = _healthbody.filter(function (item, index) {
@@ -25,6 +25,7 @@ export class HealthService {
       callback(ho);
     });
   }
+  //根据字段1筛选首页的健康信息
   getIndexHealth(callback) {
     this.getAllHealth(function (_healthbody) {
       let ho = _healthbody.filter(function (item, index) {

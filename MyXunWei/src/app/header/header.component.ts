@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-// import {GlobalService} from '../../services/global.service';
-// import {Router} from '@angular/router';
-
+import {GlobalPropertyService} from "./../services/global-property.service";
+import {Router} from '@angular/router';
+import { LocalStorage } from './../services/localStorage.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,20 +9,48 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   _hiddenNavs: boolean;
-  _showheader: boolean;
-
+  _start: boolean = false;
+  name:any;
+  showUl(){
+    this._start=!this._start;
+  }
+  tologin(){
+    this.router.navigate(['/login']);
+  }
+  toregister(){
+    this.router.navigate(['/register']);
+  }
+  toexit()
+  {
+    this.router.navigate(['/index']);
+    localStorage.clear();
+  }
   constructor(
-    // private glo: GlobalService,
-    //           private route: Router
+    private glo: GlobalPropertyService,
+    private router:Router,
+    private ls: LocalStorage,
   ) {
   }
-
   ngOnInit() {
-    // this._hiddenNavs = !this.glo._hiddenNavs;
-    // this._showheader = true;
-  }
+    if(this.ls.get('token')!=''){
+      this._hiddenNavs=false;
+      this.name = this.ls.get('name');
+    }
+    else{
+      this._hiddenNavs=true;
+    }
 
+  }
+  ngAfterContentChecked(){
+    if(this.ls.get('token')!=''){
+      this._hiddenNavs=false;
+      this.name = this.ls.get('name');
+    }
+    else{
+      this._hiddenNavs=true;
+    }
+  }
   toindex() {
-    // this.route.navigate(['/index']);
+    this.router.navigate(['/index']);
   }
 }

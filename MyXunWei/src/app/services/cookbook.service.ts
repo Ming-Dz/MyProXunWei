@@ -7,12 +7,13 @@ export class CookbookService {
 
   constructor(private http: HttpClient) {
   }
-
+  //从数据库中拉取所有菜谱信息
   getAllCookBook(callback) {
     this.http.get(this.url).subscribe(function (result) {
       callback(result);
     });
   }
+  //根据字段1筛选首页的热门的菜谱信息
   getIndexCookBook(callback) {
     this.getAllCookBook(function (_cookbookbody) {
       let cb = _cookbookbody.filter(function (item, index) {

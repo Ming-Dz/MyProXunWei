@@ -1,39 +1,34 @@
 <div class="mynav">
   <div class="mynav-logo">
-    <a>
-      <img class="myheader-logo" src="./../../assets/images/logo/logobottom.png" alt="">
-    </a>
+    <a (click)="toindex()"><img class="myheader-logo" src="../../../assets/images/logo/logobottom.png" alt=""></a>
   </div>
 
   <div class="mynav-list">
     <span><a routerLink="/index" routerLinkActive="active">首页</a></span>
     <span><a routerLink="/menu" routerLinkActive="active">菜谱</a></span>
     <span><a routerLink="/health" routerLinkActive="active">食之健康</a></span>
-    <span><a>社区广场</a></span>
-    <span><a>个人中心</a></span>
+    <span><a routerLink="/forum" routerLinkActive="active">社区广场</a></span>
+    <span><a routerLink="/personal-center" routerLinkActive="active">个人中心</a></span>
   </div>
-
   <div class="mynav-login">
-    <ul class="myhead-login">
-    <button class="myradius-login">登录</button>
-
-    <button class="myradius-regist">注册</button>
+    <ul class="myhead-login "*ngIf="_hiddenNavs">
+      <button class="myradius-login" (click)="tologin()">登录</button>
+      <button class="myradius-regist" (click)="toregister()">注册</button>
     </ul>
 
-    <!--<div class="dropdown " *ngIf="!_hiddenNavs">-->
-    <!--<button class=" dropdown-toggle myradius-welcome" type="button" id="dropdownMenu1" data-toggle="dropdown"-->
-    <!--aria-haspopup="true" aria-expanded="true">-->
-    <!--欢迎啦啦啦啦-->
-    <!--<span class="caret"></span>-->
-    <!--</button>-->
-    <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
-    <!--<li><a href="#">Action</a></li>-->
-    <!--<li><a href="#">Another action</a></li>-->
-    <!--<li><a href="#">Something else here</a></li>-->
-    <!--<li role="separator" class="divider"></li>-->
-    <!--<li><a href="#">Separated link</a></li>-->
-    <!--</ul>-->
-    <!--</div>-->
+    <div class="dropdown "*ngIf="!_hiddenNavs">
+      <button class=" dropdown-toggle myradius-welcome" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        欢迎&nbsp;:&nbsp;{{name}}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li class="li_menu"><a (click)="tomenu()">发布菜谱</a></li>
+        <li class="li_attention"><a (click)="toattention()">我的关注</a></li>
+        <li class="li_collect"><a (click)="tocollect()">我的收藏</a></li>
+        <li class="li_zone"><a (click)="tozone()">我的秘密基地</a></li>
+        <li class="li_exit"><a (click)="toexit()">退出</a></li>
+      </ul>
+    </div>
   </div>
 </div>
 

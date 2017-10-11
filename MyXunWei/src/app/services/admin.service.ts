@@ -5,7 +5,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class AdminService {
 
   urlcook: string = 'http://localhost:3000/ckbook';
-  urlcookup: string = 'http://localhost:3000/ckbookup';
   urlpost: string = 'http://localhost:3000/post';
 
   constructor(private http: HttpClient) {
@@ -17,11 +16,6 @@ export class AdminService {
     });
   }
 
-  getAllCookbookUp(callback) {
-    this.http.get(this.urlcookup).subscribe(function (result) {
-      callback(result);
-    });
-  }
 
   getAllPost(callback) {
     this.http.get(this.urlpost).subscribe(function (result) {
@@ -42,18 +36,6 @@ export class AdminService {
       });
   }
 
-  deleteUserMenu(menuid, callback) {
-    console.log('service' + menuid);
-    // const headers = new HttpHeaders({id: menuid});
-    // console.log(headers);
-    this.http.post(this.urlcookup + '/delusermenu', {'ckupid': menuid}).subscribe(function (result) {
-        callback(result);
-        // console.log(result);
-      },
-      function (error) {
-        console.log(error.message);
-      });
-  }
 
   deletePost(posttitle, callback) {
     console.log('service' + posttitle);
